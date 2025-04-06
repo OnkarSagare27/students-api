@@ -29,6 +29,7 @@ func New() http.HandlerFunc {
 			validateErrs := err.(validator.ValidationErrors)
 
 			response.WriteJson(w, http.StatusBadRequest, response.ValidationError(validateErrs))
+			return
 		}
 		response.WriteJson(w, http.StatusCreated, map[string]any{"success": true})
 
